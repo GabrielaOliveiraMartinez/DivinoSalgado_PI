@@ -22,24 +22,36 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 
+//Aqui estamos atribuindo que esta é uma entidade que será uma tabela de banco de dados
 @Entity
 @Table(name = "Produtos")
 public class Produto implements Serializable 
 {
+    //Aqui estamos criando um identificador para esta entidade que é o ID
+    //Onde gera um numero aleatorio e nao fixo para cada identificador
+    
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Column
     private int Id;
 
+    
+    //NotBlank é uma validação do SpringBoot, para que traga uma mensagem se tiver um campo em branco(somnente para tipo String)
+    //@Size é para declarar o maximo ou minimo de caracteres aceitos
     @NotBlank(message = "Preencha o nome do produto!")
     @Size(max = 60)
     private String nome;
 
+    //@NotNull é para verificar se o campo requirido nao retorna um valor nulo
+    //@NumberFormat é para declarar um tipo de formatação(o nosso como Decimal para produtos)
+    //@Min é para fazer validacao pra verificar se o valor correspondente é menor que zero ou valor minimamente aceitavel
     @NotNull(message = "Preencha o preço do produto!")
     @NumberFormat(style = NumberFormat.Style.NUMBER)
     @Min(value = 0, message = "O preço não pode ser negativo")
     private double preco;
 
+
+    //@NotEmpty serve para que nao deixe uma caixa de caracteres receber um campo vazio
     @NotEmpty(message = "Prencha a descrição!")
     @Size(max = 150)
     private String descricao;

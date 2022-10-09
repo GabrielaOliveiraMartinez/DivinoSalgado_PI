@@ -29,7 +29,7 @@ public class ProdutoController
     @Autowired
     private ProdutoRepository produtoRepository;
 
-
+    //Aqui faz a chamada da View(front)de produtos no HTML, que lista e retorna todos os produtos 
     @GetMapping
     public ModelAndView Listar()
     {
@@ -42,6 +42,8 @@ public class ProdutoController
         return mv;
     }
 
+
+    //Chama a view adicionar  que esta dentro da pasta Produtos em HTML
     @GetMapping("/DivinoSalgadoPi/src/main/resources/templates/Produtos/Adicionar.html")
     public ModelAndView Adicionar() 
     {
@@ -52,6 +54,8 @@ public class ProdutoController
         return mv;
     }
 
+
+    //salva as alteracoes adicionadas(Metodo POST)
     @PostMapping("/DivinoSalgadoPi/src/main/resources/templates/Produtos/Adicionar.html")
     public ModelAndView Adicionar(@ModelAttribute("produtos") @Valid Produto p, @RequestParam("imagem")MultipartFile imagem, BindingResult br) throws IOException
     {
@@ -78,7 +82,7 @@ public class ProdutoController
     }
     
 
-
+    //Altera o produto através do ID
     @GetMapping("/Alterar/{id}")
     public ModelAndView Alterar(@PathVariable int id)
     {
@@ -96,7 +100,7 @@ public class ProdutoController
         return mv;
     }
 
-
+    //Aqui salva a alteração
     @PostMapping("/Alterar/{id}")
     public ModelAndView Alterar(@PathVariable int id, @ModelAttribute("produtos") @Valid Produto p, @RequestParam("imagem") MultipartFile imagem, BindingResult br) throws IOException
     {
@@ -138,6 +142,8 @@ public class ProdutoController
 
     }
 
+
+    //Nesta funcionalidade, ao invés de excluir desabilitamos o item(Disponivel ou Esgota)
     @GetMapping("/Excluir/{id}")
     public ModelAndView Excluir(@PathVariable int id)
     {
@@ -163,7 +169,7 @@ public class ProdutoController
 
     }
 
-
+    //Lista a Descrição do produtoo
     @GetMapping("Detalhes/{id}")
     public ModelAndView Detalhes(@PathVariable int id)
     {
