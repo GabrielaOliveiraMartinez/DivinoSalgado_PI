@@ -56,6 +56,8 @@ public class Produto implements Serializable
     @Size(max = 150)
     private String descricao;
 
+
+    @Transient
     private String imagemParaSalvar;
 
     @Transient

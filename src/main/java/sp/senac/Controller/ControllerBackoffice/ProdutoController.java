@@ -68,12 +68,12 @@ public class ProdutoController
 
             String arquivo = StringUtils.cleanPath(imagem.getOriginalFilename());
 
-            p.setImagemParaSalvar(arquivo);
+           // p.setImagemParaSalvar(arquivo);
             p.setAtivo(true);
 
-            String diretorioSalvarImagem = "/DivinoSalgadoPi/src/main/resources/static/img/ProdutosImagens" + UUID.randomUUID();
+           /// String diretorioSalvarImagem = "/DivinoSalgadoPi/src/main/resources/static/img/ProdutosImagens" + UUID.randomUUID();
             
-            FileUploadUtil.saveFile(diretorioSalvarImagem, arquivo, imagem);
+           // FileUploadUtil.saveFile(diretorioSalvarImagem, arquivo, imagem);
 
             produtoRepository.save(p);
 
@@ -119,18 +119,18 @@ public class ProdutoController
                 pAux.setNome(p.getNome());
                 pAux.setPreco(p.getPreco());
                 pAux.setDescricao(p.getDescricao());
-                pAux.setImagemParaSalvar(p.getImagemParaSalvar());
-                pAux.setImagem(p.getImagem());
+                //pAux.setImagemParaSalvar(p.getImagemParaSalvar());
+                //pAux.setImagem(p.getImagem());
                 pAux.setAtivo(p.getAtivo());
                 pAux.setIdCategoria(p.getIdCategoria());
 
-                String arq = StringUtils.cleanPath(imagem.getOriginalFilename());
+                //String arq = StringUtils.cleanPath(imagem.getOriginalFilename());
 
-                pAux.setImagemParaSalvar(arq);
+              //  pAux.setImagemParaSalvar(arq);
 
-                String diretorioSalvarImagem = "/DivinoSalgadoPi/src/main/resources/static/img/ProdutosImagens";
+                //String diretorioSalvarImagem = "/DivinoSalgadoPi/src/main/resources/static/img/ProdutosImagens";
 
-                FileUploadUtil.saveFile(diretorioSalvarImagem, arq + "_" + UUID.randomUUID(), imagem);
+               // FileUploadUtil.saveFile(diretorioSalvarImagem, arq + "_" + UUID.randomUUID(), imagem);
 
                 produtoRepository.save(pAux);
 
